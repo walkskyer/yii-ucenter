@@ -4,17 +4,15 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h1>欢迎光临 <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<p>恭喜！你现在得到了一个基于yii的ucenter扩展。</p>
 
-<p>You may change the content of this page by modifying the following two files:</p>
+<p>这只是个实例，并不建议你在此基础上写程序。</p>
 <ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
+	<li>不过你可以将extensions目录下的ucenter目录拷贝到你的应用程序的扩展目录下（即extensions）；</li>
+	<li>然后将根目录下的api目录拷贝到你的网站根目录下。</li>
 </ul>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<p>本程序源代码：<a href="https://github.com/walkskyer/yii-ucenter">源代码</a>.
+你可以提交你的意见： <a href="https://github.com/walkskyer/yii-ucenter/issues">yii-ucenter讨论</a></p>

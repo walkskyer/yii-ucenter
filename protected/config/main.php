@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'yii开发测试',
+	'name'=>'yii-ucenter用户中心范例',
     'language'=>'zh_cn',
 
 	// preloading 'log' component
