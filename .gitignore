@@ -1,0 +1,7 @@
+/.idea/
+/.git/
+/assets/*
+/protected/runtime/*
+themes/classic/views/
+!index.html
+/protected/extensions/ucenter/api/config.inc.php
