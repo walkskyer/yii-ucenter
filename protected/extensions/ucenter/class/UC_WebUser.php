@@ -9,11 +9,13 @@
  */
 /**
  * @property UC_IUser $ucUser
+ * @property UC_UserIdentity $identity
  */
 class UC_WebUser extends CWebUser
 {
     public $ucUser;
     public $uc;
+    public $identity;
 
     public function init()
     {
@@ -23,10 +25,10 @@ class UC_WebUser extends CWebUser
         if ($this->getIsGuest() && $this->uc->synchronize_validate()) {
             /* @var UC_IUser $user*/
             $user=$this->ucUser->findByName($this->uc->ucUser->username);
-            $identity = new UC_UserIdentity($user->getUserName(), $user->getPassword());
+            $this->identity->setUser($user->getUserName(), $user->getPassword());
             $duration = false ? 3600 * 24 * 30 : 0; // 30 days
             $this->setUCUser($user);
-            $this->login($identity, $duration);
+            $this->login($this->identity, $duration);
         }elseif(!$this->uc->synchronize_validate() && !$this->getIsGuest()){
             $this->logout();
         } else {

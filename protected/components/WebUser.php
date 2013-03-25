@@ -15,6 +15,7 @@ class WebUser extends UC_WebUser
 {
     public function init(){
         $this->ucUser=new User();
+        $this->identity= new UserIdentity('','');
         parent::init();
     }
 }

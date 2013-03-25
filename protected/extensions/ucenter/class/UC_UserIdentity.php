@@ -16,6 +16,10 @@ class UC_UserIdentity extends CUserIdentity
     public function __construct($username,$password){
         parent::__construct($username,$password);
     }
+    public function setUser($username,$password){
+        $this->username=$username;
+        $this->password=$password;
+    }
     /**
      * Authenticates a user.
      * The example implementation makes sure if the username and password
