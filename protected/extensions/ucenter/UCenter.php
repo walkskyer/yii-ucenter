@@ -100,8 +100,15 @@ class UCenter extends CComponent
         echo API_RETURN_SUCCEED;
     }
 
+    /**
+     * 设置UC user
+     * @param UC_IUser $user
+     */
     public function setUser(UC_IUser $user)
     {
+        if($user==null){
+            return;
+        }
         $this->user = $user;
         $user=$this->user->getUser();
         $this->ucUser->uid=$user['uid'];
