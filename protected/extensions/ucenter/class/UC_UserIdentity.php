@@ -67,4 +67,27 @@ class UC_UserIdentity extends CUserIdentity
         }
         return !$this->errorCode;
     }
+
+    /**
+     * 这是一个与数据源无关的验证方法的示例。
+     */
+    public function authenticate2()
+    {
+        /* @var UCenter $uc*/
+        $uc = Yii::app()->user->uc;
+        $uc->login($this->username, $this->password);
+        if ($uc->ucUser->uid > 0) {
+            $ucUser = $uc->ucUser;
+            $this->username = $ucUser->username;
+            $this->password = $ucUser->password;
+            $this->errorCode = self::ERROR_NONE;
+        } elseif ($this->ucUser->uid == -1) {
+            $this->errorCode = self::ERROR_USERNAME_INVALID;
+        } elseif ($this->ucUser->uid == -2) { //密码不一致有两种情况，暂时不区分处理。
+            $this->errorCode = self::ERROR_PASSWORD_INVALID;
+        } else { //未定义错误
+            $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
+        }
+        return !$this->errorCode;
+    }
 }
