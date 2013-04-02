@@ -97,4 +97,23 @@ class UC_WebUser extends CWebUser
         else
             return $this->ucUser;
     }
+
+    /**
+     * 返回用户的uid
+     * @return int|mixed
+     */
+    public function getId(){
+        return $this->ucUser->getUid();
+    }
+
+    /**
+     * 用户登录
+     * @param IUserIdentity $identity
+     * @param int $duration
+     * @return bool|void
+     */
+    public function login($identity,$duration=0){
+        $this->setucUser($this->uc->ucUser);
+        parent::login($identity,$duration);
+    }
 }
