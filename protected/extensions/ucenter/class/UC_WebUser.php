@@ -23,11 +23,9 @@ class UC_WebUser extends CWebUser
         $this->uc = new UCenter();
         $this->uc->init();
         if ($this->getIsGuest() && $this->uc->synchronize_validate()) {
-            /* @var UC_IUser $user*/
-            $user=$this->ucUser->findByName($this->uc->ucUser->username);
-            $this->identity->setUser($user->getUserName(), $user->getPassword());
+            $this->identity->setUser($this->uc->ucUser->getUserName(), $this->uc->ucUser->getPassword());
             $duration = false ? 3600 * 24 * 30 : 0; // 30 days
-            $this->setUCUser($user);
+            $this->setUCUser($this->uc->ucUser);
             $this->login($this->identity, $duration);
         }elseif(!$this->uc->synchronize_validate() && !$this->getIsGuest()){
             $this->logout();
