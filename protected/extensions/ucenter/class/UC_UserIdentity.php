@@ -81,9 +81,9 @@ class UC_UserIdentity extends CUserIdentity
             $this->username = $ucUser->username;
             $this->password = $ucUser->password;
             $this->errorCode = self::ERROR_NONE;
-        } elseif ($this->ucUser->uid == -1) {
+        } elseif ($uc->ucUser->uid == -1) {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        } elseif ($this->ucUser->uid == -2) { //密码不一致有两种情况，暂时不区分处理。
+        } elseif ($uc->ucUser->uid == -2) { //密码不一致有两种情况，暂时不区分处理。
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
         } else { //未定义错误
             $this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
