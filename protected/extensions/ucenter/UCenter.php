@@ -140,4 +140,80 @@ class UCenter extends CComponent
         }
         return uc_user_synlogout($this->ucUser->uid);
     }
+
+    /**
+     * 上传头像，返回上传头像的客户端代码，可以使用默认的样式，
+     * 也可通过$returnhtml设置为false获得一个配置客户端配置的数组进行自定义。
+     * @param  number  $uid
+     * @param  string $type  [virtual/real]
+     * @param  boolean  $returnhtml
+     * @return mixed
+     */
+    public  function  avatar($uid, $type = 'virtual', $returnhtml = true){
+        return uc_avatar($uid, $type, $returnhtml);
+    }
+    /**
+     * 检查email,格式，是否被占用
+     * @param $email string
+     * @return string 验证消息
+     */
+    public function   checkEmail($email){
+        switch(uc_user_checkemail($email)){
+            case  1:$msg='';break;
+            case -4:
+                $msg='请输入正确的Email格式';break;
+            case -5:
+                $msg='Email不允许注册';break;
+            case  -6:
+                $msg='Email已被注册，请更换Email';break;
+            default:
+                $msg='未知错误';
+        }
+        return $msg;
+    }
+
+    /**
+     * 检查用户名
+     * @param $username 需要验证的用户名
+     * @return string 返回验证消息
+     */
+    public  function  checkUsername($username){
+        switch(uc_user_checkname($username)){
+            case  1: $msg='';break;
+            case -1:
+                $msg='用户名不合法，为 3 - 15个字符';break;
+            case -2:
+                $msg='包含不允许注册的词语';break;
+            case -3:
+                $msg='用户名已经存在,请更换';break;
+            default:
+                $msg='未知错误';
+        }
+        return $msg;
+    }
+
+    /**
+     * 检查头像是否存在
+     * @param $uid 用户uid
+     * @param string $size 头像尺寸
+     * @param string $type 头像类型
+     * @return int 头像存在返回1否则返回0
+     */
+    public  function  checkAvatar($uid,$size='middle',$type='virtual'){
+        return uc_check_avatar($uid,$size,$type);
+    }
+
+    /**
+     * 获取用户头像
+     * @param $uid 用户uid
+     * @param string $size 头像尺寸
+     * @param string $type 是否调用真实头像
+     * @return string 返回头像url
+     */
+    public  function  getAvatar($uid,$size='middle',$type='virtual'){
+        if($type=='real'){
+            return UC_API."/avatar.php?uid=$uid&size=$size&type=$type";
+        }
+        return UC_API."/avatar.php?uid=$uid&size=$size";
+    }
 }
