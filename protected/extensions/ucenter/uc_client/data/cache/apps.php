@@ -54,5 +54,23 @@ $_CACHE['apps'] = array (
     ),
     'recvnote' => '1',
   ),
+  8 => 
+  array (
+    'appid' => '8',
+    'type' => 'OTHER',
+    'name' => 'yii_portal',
+    'url' => 'http://www.88jianshen.com.zwj/yii_portal',
+    'ip' => '',
+    'viewprourl' => '',
+    'apifilename' => 'uc.php',
+    'charset' => '',
+    'synlogin' => '1',
+    'extra' => 
+    array (
+      'apppath' => '',
+      'extraurl' => '			',
+    ),
+    'recvnote' => '1',
+  ),
   'UC_API' => 'http://www.88jianshen.com.zwj/uc_server',
 );

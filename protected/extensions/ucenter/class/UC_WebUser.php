@@ -74,7 +74,7 @@ class UC_WebUser extends CWebUser
     protected function changeIdentity($id, $name, $states)
     {
         Yii::app()->getSession()->regenerateID(true);
-        $this->setId($this->ucUser->id);
+        if(!is_null($this->ucUser)) $this->setId($this->ucUser->getUid());
         $this->setName($name);
         $this->setUCUser();
         $this->loadIdentityStates($states);
