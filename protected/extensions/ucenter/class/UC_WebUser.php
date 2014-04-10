@@ -13,6 +13,10 @@
  */
 class UC_WebUser extends CWebUser
 {
+    /**
+     * @var UC_IUser
+     * 将app的用户与UCenter用户相连,该实例必须是UC_IUser接口的实现
+     */
     public $ucUser;
     public $uc;
     public $identity;
@@ -80,7 +84,7 @@ class UC_WebUser extends CWebUser
         $this->loadIdentityStates($states);
     }
 
-    public function setUCUser(UC_User $ucuser=null)
+    public function setUCUser(UC_IUser $ucuser=null)
     {
         if($ucuser!==null){
             $this->ucUser=$ucuser;
